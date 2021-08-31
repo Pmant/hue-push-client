@@ -1,15 +1,15 @@
 hue-push-client / [Exports](modules.md)
 
 # hue push client
-==============
 [![License](https://img.shields.io/badge/License-MIT-blue)](#license "Go to license section")
+
 Allows easy access to the push API of Philips Hue Bridge
 
-#Installation
+# Installation
 `npm install hue-push-client`
 
-#Usage Example
-```
+# Usage Example
+```javascript
 /**
  * This example connects to a Hue Bridge and closes connection after 30 seconds
  */
@@ -43,8 +43,8 @@ client.addEventListener('message', function (message) {
 });
 ```
 
-#Documentation
-[Exports](modules.md)
+# Documentation
+[Exports](docs/modules.md)
 
-#license
+# license
 Released under [ISC](https://github.com/Pmant/hue-push-client/blob/master/license.txt) by @Pmant

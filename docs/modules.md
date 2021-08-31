@@ -43,7 +43,7 @@
 
 #### Defined in
 
-[src/index.ts:90](https://github.com/Pmant/hue-push-client/blob/5503874/src/index.ts#L90)
+[src/index.ts:90](https://github.com/Pmant/hue-push-client/blob/9e21eac/src/index.ts#L90)
 
 ## Functions
 
@@ -65,7 +65,7 @@ returns Hue Bridge's resources output as object
 
 #### Defined in
 
-[src/index.ts:98](https://github.com/Pmant/hue-push-client/blob/5503874/src/index.ts#L98)
+[src/index.ts:98](https://github.com/Pmant/hue-push-client/blob/9e21eac/src/index.ts#L98)
 
 ___
 
@@ -87,4 +87,4 @@ returns Hue Bridge's resources output as object with UUIDs as keys
 
 #### Defined in
 
-[src/index.ts:114](https://github.com/Pmant/hue-push-client/blob/5503874/src/index.ts#L114)
+[src/index.ts:114](https://github.com/Pmant/hue-push-client/blob/9e21eac/src/index.ts#L114)

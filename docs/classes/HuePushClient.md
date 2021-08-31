@@ -57,7 +57,7 @@ EventSource.constructor
 
 #### Defined in
 
-[src/index.ts:20](https://github.com/Pmant/hue-push-client/blob/5503874/src/index.ts#L20)
+[src/index.ts:20](https://github.com/Pmant/hue-push-client/blob/9e21eac/src/index.ts#L20)
 
 ## Properties
 
@@ -109,7 +109,7 @@ ___
 
 #### Defined in
 
-[src/index.ts:14](https://github.com/Pmant/hue-push-client/blob/5503874/src/index.ts#L14)
+[src/index.ts:14](https://github.com/Pmant/hue-push-client/blob/9e21eac/src/index.ts#L14)
 
 ___
 
@@ -322,7 +322,7 @@ EventSource.close
 
 #### Defined in
 
-[src/index.ts:80](https://github.com/Pmant/hue-push-client/blob/5503874/src/index.ts#L80)
+[src/index.ts:80](https://github.com/Pmant/hue-push-client/blob/9e21eac/src/index.ts#L80)
 
 ___
 
@@ -391,7 +391,7 @@ ___
 
 #### Defined in
 
-[src/index.ts:40](https://github.com/Pmant/hue-push-client/blob/5503874/src/index.ts#L40)
+[src/index.ts:40](https://github.com/Pmant/hue-push-client/blob/9e21eac/src/index.ts#L40)
 
 ___
 
@@ -405,4 +405,4 @@ ___
 
 #### Defined in
 
-[src/index.ts:73](https://github.com/Pmant/hue-push-client/blob/5503874/src/index.ts#L73)
+[src/index.ts:73](https://github.com/Pmant/hue-push-client/blob/9e21eac/src/index.ts#L73)
