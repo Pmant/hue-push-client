@@ -7,7 +7,7 @@ Allows easy access to the push API of Philips Hue Bridge
 `npm install hue-push-client`
 
 # Usage Example
-```
+```javascript
 /**
  * This example connects to a Hue Bridge and closes connection after 30 seconds
  */
