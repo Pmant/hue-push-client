@@ -42,7 +42,7 @@ client.addEventListener('message', function (message) {
 ```
 
 # Documentation
-[Exports](modules.md)
+[Exports](docs/modules.md)
 
 # license
 Released under [ISC](https://github.com/Pmant/hue-push-client/blob/master/license.txt) by @Pmant
