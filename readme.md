@@ -3,10 +3,10 @@
 
 Allows easy access to the push API of Philips Hue Bridge
 
-#Installation
+# Installation
 `npm install hue-push-client`
 
-#Usage Example
+# Usage Example
 ```
 /**
  * This example connects to a Hue Bridge and closes connection after 30 seconds
@@ -41,8 +41,8 @@ client.addEventListener('message', function (message) {
 });
 ```
 
-#Documentation
+# Documentation
 [Exports](modules.md)
 
-#license
+# license
 Released under [ISC](https://github.com/Pmant/hue-push-client/blob/master/license.txt) by @Pmant
