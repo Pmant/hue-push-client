@@ -84,6 +84,7 @@ out
 
 # Nuxt.js build / generate output
 .nuxt
+dist
 
 # Gatsby files
 .cache/
@@ -120,6 +121,10 @@ out
 
 # IntelliJ project files
 .idea
-*.iml
 gen
+
+src
+docs
+tsconfig.json
+tslint.json
 
