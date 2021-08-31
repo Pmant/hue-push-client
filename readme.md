@@ -1,6 +1,6 @@
 # hue push client
-==============
 [![License](https://img.shields.io/badge/License-MIT-blue)](#license "Go to license section")
+
 Allows easy access to the push API of Philips Hue Bridge
 
 #Installation
