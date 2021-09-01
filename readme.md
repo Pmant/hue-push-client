@@ -13,7 +13,7 @@ Allows easy access to the push API of Philips Hue Bridge
  */
 const HuePushClient = require('hue-push-client');
 
-const client = new HuePushClient({ip: '192.168.0.85', user: 'mWAfdI7PUJRvZ9IwXB0YgeLVn9Ytjpb5RjrFJ0rn'});
+const client = new HuePushClient({ip: '10.0.0.1', user: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'});
 setTimeout(() => {client.close();}, 30000);
 client.addEventListener('open', function () {
     console.log('connection opened');
