@@ -13,9 +13,8 @@ Allows easy access to the push API of Philips Hue Bridge
  */
 const HuePushClient = require('hue-push-client');
 
-const client = new HuePushClient({ip: '192.168.0.10', user: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'});
+const client = new HuePushClient({ip: '192.168.0.85', user: 'mWAfdI7PUJRvZ9IwXB0YgeLVn9Ytjpb5RjrFJ0rn'});
 setTimeout(() => {client.close();}, 30000);
-
 client.addEventListener('open', function () {
     console.log('connection opened');
 });
@@ -25,7 +24,6 @@ client.addEventListener('close', function () {
 client.addEventListener('error', function (e) {
     console.log('error: ' + e.message);
 });
-
 client.addEventListener('message', function (message) {
     if (!message.data) {
         console.log('empty message');
@@ -40,9 +38,46 @@ client.addEventListener('message', function (message) {
     }
 });
 ```
+The data part of an incomming message looks like this:
+```json
+[
+   {
+      "creationtime":"2021-09-01T08:40:54Z",
+      "data":[
+         {
+            "id":"d231f405-baab-406e-0000-d345a1440000",
+            "id_v1":"/sensors/8",
+            "light":{
+               "light_level":10509,
+               "light_level_valid":true
+            },
+            "type":"light_level"
+         }
+      ],
+      "id":"f15d7da4-f849-44c9-0000-afc54dbe0000",
+      "type":"update"
+   }
+]
+```
+
+You can also retrieve a description of all UUID's that are used in update messages:
+```javascript
+/**
+ * Be aware that uuids() returns a promise
+ */
+async function getUUIDs() {
+    try {
+        let UUIDs = await client.uuids();
+        console.log(UUIDs);
+    } catch (e) {
+        console.log(e);
+    }
+};
+getUUIDs();
+```
 
 # Documentation
-[Exports](docs/modules.md)
+todo (see examples)
 
 # license
 Released under [ISC](https://github.com/Pmant/hue-push-client/blob/master/license.txt) by @Pmant

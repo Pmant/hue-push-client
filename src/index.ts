@@ -3,14 +3,14 @@ import https = require('https');
 import {IncomingMessage} from 'http';
 
 
-export declare interface Bridge {
+declare interface Bridge {
     /** local IP of Hue Bridge, e.g. `10.0.0.1` */
     ip: string
     /** registered Hue Bridge user */
     user: string
 }
 
-export class HuePushClient extends EventSource {
+class HuePushClient extends EventSource {
     bridge: Bridge;
 
     /**
@@ -37,11 +37,8 @@ export class HuePushClient extends EventSource {
      * @param {ResourceParser} resourceParser
      * @returns {Promise<any|Error>}
      */
-    resources(resourceParser: ResourceParser): Promise<any | Error> {
+    resources(resourceParser: ResourceParser = defaultResourceParser): Promise<any | Error> {
         return new Promise((resolve, reject) => {
-            resolve({});
-            reject(new Error(''));
-
             https.get({
                     host: this.bridge.ip,
                     port: 443,
@@ -57,7 +54,12 @@ export class HuePushClient extends EventSource {
                         body += chunk;
                     });
                     res.on('end', () => {
-                        resolve(resourceParser(body));
+                        const result = resourceParser(body);
+                        if (result instanceof Error) {
+                            reject(result);
+                        } else {
+                            resolve(result);
+                        }
                     });
                 }
             ).on('error', (e: Error) => {
@@ -81,22 +83,22 @@ export class HuePushClient extends EventSource {
         super.close();
     }
 }
+
 module.exports = HuePushClient;
 
 interface Resource {
     id: string
 }
 
-export type ResourceParser = (resources: string) => any;
-
+type ResourceParser = (resources: string) => any;
 
 /**
  * returns Hue Bridge's resources output as object
  * @param {string} resources
  * @returns {Object|SyntaxError}
  */
-export const defaultResourceParser:ResourceParser = (resources: string): any | Error => {
-    let jsonObject:object = {};
+const defaultResourceParser: ResourceParser = (resources: string): any | Error => {
+    let jsonObject: object = {'asd': 'asd'};
     try {
         jsonObject = JSON.parse(resources);
     } catch (e) {
@@ -105,13 +107,12 @@ export const defaultResourceParser:ResourceParser = (resources: string): any | E
     return jsonObject;
 }
 
-
 /**
  * returns Hue Bridge's resources output as object with UUIDs as keys
  * @param {string} resources
  * @returns {Object|SyntaxError}
  */
-export const uuidResourceParser: ResourceParser = (resources: string): { [index: string]: Resource } | Error => {
+const uuidResourceParser: ResourceParser = (resources: string): { [index: string]: Resource } | Error => {
     let data: Iterable<Resource>;
     try {
         data = JSON.parse(resources).data;

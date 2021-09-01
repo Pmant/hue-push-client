@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.uuidResourceParser = exports.defaultResourceParser = exports.HuePushClient = void 0;
 const EventSource = require("eventsource");
 const https = require("https");
 class HuePushClient extends EventSource {
@@ -25,10 +24,8 @@ class HuePushClient extends EventSource {
      * @param {ResourceParser} resourceParser
      * @returns {Promise<any|Error>}
      */
-    resources(resourceParser) {
+    resources(resourceParser = defaultResourceParser) {
         return new Promise((resolve, reject) => {
-            resolve({});
-            reject(new Error(''));
             https.get({
                 host: this.bridge.ip,
                 port: 443,
@@ -43,7 +40,13 @@ class HuePushClient extends EventSource {
                     body += chunk;
                 });
                 res.on('end', () => {
-                    resolve(resourceParser(body));
+                    const result = resourceParser(body);
+                    if (result instanceof Error) {
+                        reject(result);
+                    }
+                    else {
+                        resolve(result);
+                    }
                 });
             }).on('error', (e) => {
                 reject(e);
@@ -55,7 +58,7 @@ class HuePushClient extends EventSource {
      * @returns {Promise<Object<Resource>|Error>}
      */
     uuids() {
-        return this.resources(exports.uuidResourceParser);
+        return this.resources(uuidResourceParser);
     }
     /**
      *  closes all open connections to Hue Bridge
@@ -64,7 +67,6 @@ class HuePushClient extends EventSource {
         super.close();
     }
 }
-exports.HuePushClient = HuePushClient;
 module.exports = HuePushClient;
 /**
  * returns Hue Bridge's resources output as object
@@ -72,7 +74,7 @@ module.exports = HuePushClient;
  * @returns {Object|SyntaxError}
  */
 const defaultResourceParser = (resources) => {
-    let jsonObject = {};
+    let jsonObject = { 'asd': 'asd' };
     try {
         jsonObject = JSON.parse(resources);
     }
@@ -81,7 +83,6 @@ const defaultResourceParser = (resources) => {
     }
     return jsonObject;
 };
-exports.defaultResourceParser = defaultResourceParser;
 /**
  * returns Hue Bridge's resources output as object with UUIDs as keys
  * @param {string} resources
@@ -101,4 +102,3 @@ const uuidResourceParser = (resources) => {
     }
     return UUIDs;
 };
-exports.uuidResourceParser = uuidResourceParser;
