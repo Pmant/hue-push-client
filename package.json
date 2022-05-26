@@ -19,7 +19,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "eventsource": "^1.1.0"
+    "eventsource": "^2.0.2"
   },
   "devDependencies": {
     "@types/eventsource": "^1.1.6",
